@@ -19,10 +19,6 @@ import {
 
 const DEFAULT_SERVER_URL = "https://cloudstash.dev";
 
-interface Preferences {
-  serverUrl?: string;
-}
-
 export const provideLive = <A, E>(
   effect: Effect.Effect<
     A,
@@ -61,6 +57,7 @@ export const provideLive = <A, E>(
     }),
     Effect.provideService(PreferencesService, {
       serverUrl:
-        getPreferenceValues<Preferences>().serverUrl || DEFAULT_SERVER_URL,
+        getPreferenceValues<ExtensionPreferences>().serverUrl ||
+        DEFAULT_SERVER_URL,
     }),
   );

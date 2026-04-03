@@ -5,10 +5,6 @@ import { saveUrl, validateUrl } from "./ingest";
 import { provideLive } from "./live";
 import { HudService, ToastService } from "./services";
 
-interface Arguments {
-  url: string;
-}
-
 const program = (url: string) =>
   Effect.gen(function* () {
     const hud = yield* HudService;
@@ -27,7 +23,7 @@ const program = (url: string) =>
   });
 
 export default async function SaveLink(
-  props: LaunchProps<{ arguments: Arguments }>,
+  props: LaunchProps<{ arguments: Arguments.SaveLink }>,
 ) {
   await program(props.arguments.url.trim()).pipe(
     Effect.catchTags({

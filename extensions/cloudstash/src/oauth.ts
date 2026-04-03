@@ -4,10 +4,6 @@ import { OAuth, getPreferenceValues } from "@raycast/api";
 
 const DEFAULT_SERVER_URL = "https://cloudstash.dev";
 
-interface Preferences {
-  serverUrl?: string;
-}
-
 const client = new OAuth.PKCEClient({
   redirectMethod: OAuth.RedirectMethod.Web,
   providerName: "Cloudstash",
@@ -22,7 +18,7 @@ export async function getApiKey(): Promise<string> {
     return tokenSet.accessToken;
   }
 
-  const { serverUrl } = getPreferenceValues<Preferences>();
+  const { serverUrl } = getPreferenceValues<ExtensionPreferences>();
   const baseUrl = (serverUrl || DEFAULT_SERVER_URL).replace(/\/$/, "");
 
   const authRequest = await client.authorizationRequest({
