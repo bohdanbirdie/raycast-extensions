@@ -1,6 +1,6 @@
 # Cloudstash Changelog
 
-## {PR_MERGE_DATE} - Initial Release
+## [Initial Release] - {PR_MERGE_DATE}
 
 - Save links via URL argument or clipboard
 - OAuth-style connect flow — no manual API key setup
